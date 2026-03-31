@@ -1,4 +1,4 @@
-import { describe, it, expect, vi } from 'vitest'
+import { describe, it, expect } from 'vitest'
 import { handleRequest, handleToolCall, requireString } from '../mcp'
 
 describe('requireString', () => {
@@ -34,7 +34,7 @@ describe('handleRequest', () => {
       result: {
         protocolVersion: '2024-11-05',
         capabilities: { tools: {} },
-        serverInfo: { name: 'ctx-scanner', version: '0.1.0' }
+        serverInfo: { name: 'ctx-scanner', version: '1.0.0' }
       }
     })
   })
