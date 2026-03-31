@@ -2,6 +2,7 @@
   "name": "ast-scanner",
   "version": "1.0.0",
   "description": "TypeScript/Vue/React scanner for ctx context memory",
+  "type": "module",
   "main": "dist/index.js",
   "bin": {
     "ast-scanner": "dist/index.js"
