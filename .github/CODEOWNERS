@@ -1,0 +1,11 @@
+# Default owners for everything in the repo
+* @AvdienkoSergey
+
+# Source code
+/src/ @AvdienkoSergey
+
+# Documentation
+/docs/ @AvdienkoSergey
+
+# CI/CD configuration
+/.github/ @AvdienkoSergey
