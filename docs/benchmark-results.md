@@ -31,8 +31,8 @@
 | NFR   | Requirement                             | Status | Notes                                                         |
 |-------|-----------------------------------------|--------|---------------------------------------------------------------|
 | 1.1   | Manual mode < 1s for ~500 files         |  PASS | 315 files -> 152ms. Linear estimate for 500: ~242ms           |
-| 1.1   | Manual mode < 1s for ~500 files (large) |  NOTE | 1 417 files -> 1.08s — expected to be above limit at x4.5 size|
-| 1.2   | Precise mode 2-5s for ~500 files        |  PASS | 315 files -> 1.06s. 1 417 files -> 2.45s — within the limit  |
+| 1.1   | Manual mode < 1s for ~500 files (large) |  NOTE | 1 417 files -> 1.08s - expected to be above limit at x4.5 size|
+| 1.2   | Precise mode 2-5s for ~500 files        |  PASS | 315 files -> 1.06s. 1 417 files -> 2.45s - within the limit  |
 
 ### Manual mode estimate for 500 files
 
@@ -50,23 +50,23 @@ Rate: ~0.84ms / file (linear)
 
 ### 1. Stable results
 
-Stddev across all setups is <= 21ms for three out of four (<= 2% of median). Large/precise showed stddev 239ms because of one outlier (3.10s) — results are overall easy to reproduce.
+Stddev across all setups is <= 21ms for three out of four (<= 2% of median). Large/precise showed stddev 239ms because of one outlier (3.10s) - results are overall easy to reproduce.
 
-### 2. Manual vs Precise — difference in refs
+### 2. Manual vs Precise - difference in refs
 
 On the small project, results are almost the same: manual 633 refs vs precise 632 refs.
 
 On the large project, manual found **1 326 refs**, and precise found **1 195 refs** (+131 refs for manual).
 
 **Why the difference:**
-- Manual resolver uses heuristics: fuzzy name matching for barrel re-export resolution and pattern matching without type information — this gives false links of calls to same-name functions from other modules
+- Manual resolver uses heuristics: fuzzy name matching for barrel re-export resolution and pattern matching without type information - this gives false links of calls to same-name functions from other modules
 - Precise resolver uses TypeScript TypeChecker, which follows declarations exactly
-- On the small project, the difference is small (1 ref) — false matches from manual grow with more files, but after fixing tsconfig.json paths parsing, the gap got much smaller
+- On the small project, the difference is small (1 ref) - false matches from manual grow with more files, but after fixing tsconfig.json paths parsing, the gap got much smaller
 
 ### 3. Memory footprint (Peak RSS)
 
 - Manual mode: 219-624 MB, grows with number of files
-- Precise mode: 652-665 MB — TypeScript TypeChecker needs more memory, but on the large project the difference is small (~40 MB)
+- Precise mode: 652-665 MB - TypeScript TypeChecker needs more memory, but on the large project the difference is small (~40 MB)
 
 ### 4. Scaling behavior
 

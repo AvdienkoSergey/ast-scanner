@@ -23,8 +23,8 @@ Two resolvers with the same interface:
 
 ```
 src/resolvers/
-  manual.ts   — manual resolution (default, fast)
-  precise.ts  — TypeChecker (--precise, accurate)
+  manual.ts   - manual resolution (default, fast)
+  precise.ts  - TypeChecker (--precise, accurate)
 ```
 
 Both return `Map<string, Set<string>>` (callerLid -> Set<targetLid>), which makes them interchangeable in `scanner.ts`:
@@ -37,13 +37,13 @@ const entityRefs = precise
 
 ### How precise resolver works
 
-1. Looks for `tsconfig.json` with `ts.findConfigFile()`. If not found — creates default config
+1. Looks for `tsconfig.json` with `ts.findConfigFile()`. If not found - creates default config
 2. Creates `ts.Program` with a custom `CompilerHost` that intercepts reading of `.vue` files and uses the extracted `<script>` block as a virtual `.vue.ts` file
 3. Gets `TypeChecker` from the program
 4. For each `CallExpression` in AST:
-   - `checker.getSymbolAtLocation()` — gets the symbol of the called identifier
-   - `checker.getAliasedSymbol()` — follows re-export chains
-   - `symbol.valueDeclaration.getSourceFile()` — finds the file where it is defined
+   - `checker.getSymbolAtLocation()` - gets the symbol of the called identifier
+   - `checker.getAliasedSymbol()` - follows re-export chains
+   - `symbol.valueDeclaration.getSourceFile()` - finds the file where it is defined
    - Matches with `fnIndex` to get the target LID
 
 ### What gets better
@@ -60,15 +60,15 @@ const entityRefs = precise
 
 Custom `CompilerHost` intercepts access to `.vue` files:
 
-- `host.readFile('Component.vue.ts')` — returns the `<script>` block content
-- `host.fileExists('Component.vue.ts')` — returns `true` for files with extracted script
+- `host.readFile('Component.vue.ts')` - returns the `<script>` block content
+- `host.fileExists('Component.vue.ts')` - returns `true` for files with extracted script
 - Virtual files are added to the program file list
 
 ## Reasons
 
-- TypeChecker gives the most accurate symbol resolution — it is the same mechanism that IDEs use
+- TypeChecker gives the most accurate symbol resolution - it is the same mechanism that IDEs use
 - The mode is optional (`--precise`), so it does not slow down standard usage
-- The resolver interface is the same — switching is transparent to the rest of the code
+- The resolver interface is the same - switching is transparent to the rest of the code
 
 ## Alternatives
 
@@ -79,5 +79,5 @@ Custom `CompilerHost` intercepts access to `.vue` files:
 
 - `--precise` is slower: ~2-5 seconds for 100 files vs ~50ms in manual mode
 - Needs `tsconfig.json` for full path aliases support (without it, works with default config)
-- Vue files are processed through virtual `.vue.ts` files — this may not cover all edge cases of SFC-specific syntax
+- Vue files are processed through virtual `.vue.ts` files - this may not cover all edge cases of SFC-specific syntax
 - Refactoring: reference resolution logic was moved from `scanner.ts` to separate modules `resolvers/manual.ts` and `resolvers/precise.ts`

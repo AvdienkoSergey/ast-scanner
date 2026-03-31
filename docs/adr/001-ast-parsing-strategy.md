@@ -16,7 +16,7 @@ For Vue SFC we use `@vue/compiler-sfc` to get `<script>` and `<template>` blocks
 ## Reasons
 
 - TypeScript Compiler API gives a full AST tree with types, modifiers, and node positions
-- No extra dependencies — `typescript` is already the main dependency of the project
+- No extra dependencies - `typescript` is already the main dependency of the project
 - Supports TSX out of the box
 - `@vue/compiler-sfc` is the official Vue parser, it is correct for SFC parsing
 

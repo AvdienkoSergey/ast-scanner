@@ -118,7 +118,7 @@ async function singleRun(projectPath: string, precise: boolean): Promise<RunResu
 // ---------------------------------------------------------------------------
 
 async function benchConfig(label: string, projectPath: string, precise: boolean): Promise<BenchResult> {
-  // Warmup — discard results
+  // Warmup - discard results
   for (let i = 0; i < WARMUP_RUNS; i++) {
     await singleRun(projectPath, precise)
   }

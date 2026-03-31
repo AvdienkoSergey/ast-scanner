@@ -47,4 +47,4 @@ Like QuickCheck/QCheck for extra guarantees:
 
 - Integration tests create temporary directories (cleaned up in finally)
 - Property-based tests generate valid TypeScript identifiers with regex-constrained arbitraries
-- MCP server and emitToCtx (shell exec) are not covered by automatic tests — they need mocks of external dependencies
+- MCP server and emitToCtx (shell exec) are not covered by automatic tests - they need mocks of external dependencies

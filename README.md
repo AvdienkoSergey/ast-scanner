@@ -42,7 +42,7 @@ The script runs each setup: 2 warmup + 7 measurements, takes the median. Memory 
 | Large (1 417 files)  | manual  | 1 417 | 1 407     | 1 326 | 1.08s   | 19ms   | 624 MB   |
 | Large (1 417 files)  | precise | 1 417 | 1 397     | 1 195 | 2.45s   | 239ms  | 665 MB   |
 
-> **Note:** On small projects, manual and precise give almost the same results (633 vs 632 refs). On large projects, manual finds ~11% more refs (1 326 vs 1 195) — some of them are false links because of fuzzy name matching. **For projects with more than 500 files where ref accuracy matters, use `--precise`.**
+> **Note:** On small projects, manual and precise give almost the same results (633 vs 632 refs). On large projects, manual finds ~11% more refs (1 326 vs 1 195) - some of them are false links because of fuzzy name matching. **For projects with more than 500 files where ref accuracy matters, use `--precise`.**
 
 ## Installation
 

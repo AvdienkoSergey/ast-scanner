@@ -40,6 +40,6 @@ Virtual entity `fn:{path}/__setup__` for top-level calls (composables in `<scrip
 
 ## Results
 
-- LID depends on the file path — renaming a file changes all related LIDs
+- LID depends on the file path - renaming a file changes all related LIDs
 - Files outside `src/` keep the full relative path in LID
 - `__setup__` is created only when there are top-level calls

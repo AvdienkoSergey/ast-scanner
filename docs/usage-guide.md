@@ -14,7 +14,7 @@ npm link   # makes ast-scanner available globally
 > It creates a symlink from the global `node_modules` folder to the current package.
 > After this, the `ast-scanner` command works in the terminal **from any directory**,
 > like the package was installed with `npm install -g`. Changes in source code
-> are picked up automatically — it is a symlink, not a copy.
+> are picked up automatically - it is a symlink, not a copy.
 > To remove: `npm unlink -g ast-scanner`.
 
 ## Quick start

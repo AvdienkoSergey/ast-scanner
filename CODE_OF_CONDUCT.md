@@ -7,7 +7,7 @@ This is an open-source project. Contributions are welcome.
 - Communicate professionally and on topic
 - Criticize code, not people
 - Accept constructive feedback
-- For large changes — open an issue first to discuss
+- For large changes - open an issue first to discuss
 
 ## Unacceptable Behavior
 

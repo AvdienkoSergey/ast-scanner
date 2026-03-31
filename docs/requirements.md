@@ -1,4 +1,4 @@
-# Requirements — ast-scanner
+# Requirements - ast-scanner
 
 ## Purpose
 
@@ -38,9 +38,9 @@ ast-scanner is a tool for static analysis of TypeScript/Vue/React projects. It g
 
 ### FR-5: Output
 
-- **FR-5.1**: `scan` command — save entities to aimemory database in batches
-- **FR-5.2**: `report` command — show stats without writing to database
-- **FR-5.3**: `mcp` command — JSON-RPC stdio server for AI agents
+- **FR-5.1**: `scan` command - save entities to aimemory database in batches
+- **FR-5.2**: `report` command - show stats without writing to database
+- **FR-5.3**: `mcp` command - JSON-RPC stdio server for AI agents
 
 ### FR-6: MCP server
 

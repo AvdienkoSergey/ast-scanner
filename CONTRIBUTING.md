@@ -6,7 +6,7 @@ Thank you for your interest in the project! This document describes the developm
 
 The project uses **GitHub Flow**:
 
-1. `main` — stable branch, always in working state
+1. `main` - stable branch, always in working state
 2. For each task, create a **feature branch** from `main`
 3. Changes go through a **Pull Request** with required code review
 4. After PR is approved, it is merged to `main` with squash merge
@@ -14,11 +14,11 @@ The project uses **GitHub Flow**:
 ### Branch naming
 
 ```
-feat/short-description    — new feature
-fix/short-description     — bug fix
-docs/short-description    — documentation changes
-refactor/short-description — refactoring without behavior change
-test/short-description    — adding or changing tests
+feat/short-description    - new feature
+fix/short-description     - bug fix
+docs/short-description    - documentation changes
+refactor/short-description - refactoring without behavior change
+test/short-description    - adding or changing tests
 ```
 
 ## Commit Convention
@@ -87,8 +87,8 @@ npm run test:watch     # tests in watch mode
 ## Reporting Issues
 
 - Use Issue templates on GitHub
-- **Bug Report** — for bugs
-- **Feature Request** — for ideas
+- **Bug Report** - for bugs
+- **Feature Request** - for ideas
 
 ## Releases
 
