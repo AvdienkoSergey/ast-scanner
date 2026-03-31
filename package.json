@@ -1,0 +1,39 @@
+{
+  "name": "ast-scanner",
+  "version": "0.1.0",
+  "description": "TypeScript/Vue/React scanner for ctx context memory",
+  "main": "dist/index.js",
+  "bin": {
+    "ast-scanner": "dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc --watch",
+    "start": "node dist/index.js",
+    "lint": "eslint src/",
+    "lint:fix": "eslint src/ --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "bench": "npx tsx --expose-gc bench.ts"
+  },
+  "dependencies": {
+    "@vue/compiler-sfc": "^3.4.0",
+    "commander": "^12.0.0",
+    "glob": "^10.0.0",
+    "typescript": "^5.0.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.4",
+    "@types/node": "^20.0.0",
+    "@vitest/coverage-v8": "^4.1.2",
+    "@vue/compiler-dom": "^3.5.31",
+    "eslint": "^9.39.4",
+    "fast-check": "^4.6.0",
+    "prettier": "^3.8.1",
+    "typescript-eslint": "^8.58.0",
+    "vitest": "^4.1.2"
+  }
+}
