@@ -48,13 +48,13 @@ const entityRefs = precise
 
 ### What gets better
 
-| Scenario                                |   manual    |   precise   |
-| --------------------------------------- | :---------: | :---------: |
-| Direct calls of imported functions      |    ~95%     |    ~99%     |
-| Barrel re-exports (`export *`)          |    ~85%     |    ~99%     |
-| Path aliases from tsconfig              | only `@/`   | all aliases |
-| Variable chains >1 level               |     0%      |    ~90%     |
-| Namespace imports (`import * as X`)     |     0%      |    ~99%     |
+| Scenario                            |  manual   |   precise   |
+| ----------------------------------- | :-------: | :---------: |
+| Direct calls of imported functions  |   ~95%    |    ~99%     |
+| Barrel re-exports (`export *`)      |   ~85%    |    ~99%     |
+| Path aliases from tsconfig          | only `@/` | all aliases |
+| Variable chains >1 level            |    0%     |    ~90%     |
+| Namespace imports (`import * as X`) |    0%     |    ~99%     |
 
 ### Vue support
 

@@ -140,7 +140,10 @@ function walkCalls(
   function addRef(callerLid: string, targetLid: string) {
     if (callerLid === targetLid) return
     let callerRefs = refs.get(callerLid)
-    if (!callerRefs) { callerRefs = new Set(); refs.set(callerLid, callerRefs) }
+    if (!callerRefs) {
+      callerRefs = new Set()
+      refs.set(callerLid, callerRefs)
+    }
     callerRefs.add(targetLid)
   }
 
@@ -276,7 +279,10 @@ export function resolveRefsPrecise(
 
     for (const [caller, targets] of fileRefs) {
       let callerRefs = entityRefs.get(caller)
-      if (!callerRefs) { callerRefs = new Set(); entityRefs.set(caller, callerRefs) }
+      if (!callerRefs) {
+        callerRefs = new Set()
+        entityRefs.set(caller, callerRefs)
+      }
       for (const target of targets) {
         callerRefs.add(target)
       }

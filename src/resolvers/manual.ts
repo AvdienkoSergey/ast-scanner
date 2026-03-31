@@ -57,7 +57,10 @@ function resolveModulePath(
 
   let basePath: string
   if (matchedAlias) {
-    basePath = path.join(matchedAlias.replacement, moduleSpecifier.slice(matchedAlias.prefix.length))
+    basePath = path.join(
+      matchedAlias.replacement,
+      moduleSpecifier.slice(matchedAlias.prefix.length)
+    )
   } else {
     basePath = path.resolve(path.dirname(importingFile), moduleSpecifier)
   }
@@ -270,7 +273,10 @@ export function resolveRefsManual(
 
       if (targetLid && targetLid !== callerLid) {
         let callerRefs = entityRefs.get(callerLid)
-        if (!callerRefs) { callerRefs = new Set(); entityRefs.set(callerLid, callerRefs) }
+        if (!callerRefs) {
+          callerRefs = new Set()
+          entityRefs.set(callerLid, callerRefs)
+        }
         callerRefs.add(targetLid)
       }
     }

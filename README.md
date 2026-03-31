@@ -35,12 +35,12 @@ The script runs each setup: 2 warmup + 7 measurements, takes the median. Memory 
 
 **Results summary:**
 
-| Project              | Mode    | Files | Functions | Refs  | Median  | Stddev | Peak RSS |
-|----------------------|---------|-------|-----------|-------|---------|--------|----------|
-| Small (315 files)    | manual  | 315   | 407       | 633   | 152ms   | 2ms    | 219 MB   |
-| Small (315 files)    | precise | 315   | 406       | 632   | 1.06s   | 21ms   | 652 MB   |
-| Large (1 417 files)  | manual  | 1 417 | 1 407     | 1 326 | 1.08s   | 19ms   | 624 MB   |
-| Large (1 417 files)  | precise | 1 417 | 1 397     | 1 195 | 2.45s   | 239ms  | 665 MB   |
+| Project             | Mode    | Files | Functions | Refs  | Median | Stddev | Peak RSS |
+| ------------------- | ------- | ----- | --------- | ----- | ------ | ------ | -------- |
+| Small (315 files)   | manual  | 315   | 407       | 633   | 152ms  | 2ms    | 219 MB   |
+| Small (315 files)   | precise | 315   | 406       | 632   | 1.06s  | 21ms   | 652 MB   |
+| Large (1 417 files) | manual  | 1 417 | 1 407     | 1 326 | 1.08s  | 19ms   | 624 MB   |
+| Large (1 417 files) | precise | 1 417 | 1 397     | 1 195 | 2.45s  | 239ms  | 665 MB   |
 
 > **Note:** On small projects, manual and precise give almost the same results (633 vs 632 refs). On large projects, manual finds ~11% more refs (1 326 vs 1 195) - some of them are false links because of fuzzy name matching. **For projects with more than 500 files where ref accuracy matters, use `--precise`.**
 
@@ -95,15 +95,15 @@ Scans the project and saves entities to aimemory:
 ast-scanner scan -p ./src -d ./context.db
 ```
 
-| Flag                          | Required | Default                                   | Description                         |
-| ----------------------------- | :------: | ----------------------------------------- | ----------------------------------- |
-| `-p, --project <path>`        |   yes    | -                                         | Source code directory                |
-| `-d, --db <path>`             |   yes    | -                                         | Path to aimemory database            |
-| `-c, --ctx <path>`            |    no    | `aimemory`                                | Path to aimemory binary              |
-| `-i, --include <patterns...>` |    no    | `**/*.ts **/*.tsx **/*.vue`               | Glob patterns to include             |
-| `-e, --exclude <patterns...>` |    no    | `**/node_modules/** **/dist/** **/*.d.ts` | Glob patterns to exclude             |
-| `--all`                       |    no    | `false`                                   | Include non-exported functions        |
-| `-q, --quiet`                 |    no    | `false`                                   | No output                            |
+| Flag                          | Required | Default                                   | Description                    |
+| ----------------------------- | :------: | ----------------------------------------- | ------------------------------ |
+| `-p, --project <path>`        |   yes    | -                                         | Source code directory          |
+| `-d, --db <path>`             |   yes    | -                                         | Path to aimemory database      |
+| `-c, --ctx <path>`            |    no    | `aimemory`                                | Path to aimemory binary        |
+| `-i, --include <patterns...>` |    no    | `**/*.ts **/*.tsx **/*.vue`               | Glob patterns to include       |
+| `-e, --exclude <patterns...>` |    no    | `**/node_modules/** **/dist/** **/*.d.ts` | Glob patterns to exclude       |
+| `--all`                       |    no    | `false`                                   | Include non-exported functions |
+| `-q, --quiet`                 |    no    | `false`                                   | No output                      |
 
 ### report
 

@@ -54,14 +54,14 @@ Entities:
 
 ### scan
 
-| Flag                          | Required | Default                                   | Description                         |
-| ----------------------------- | :------: | ----------------------------------------- | ----------------------------------- |
+| Flag                          | Required | Default                                   | Description                          |
+| ----------------------------- | :------: | ----------------------------------------- | ------------------------------------ |
 | `-p, --project <path>`        |   yes    | -                                         | Source code directory of the project |
 | `-d, --db <path>`             |   yes    | -                                         | Path to aimemory database            |
 | `-c, --ctx <path>`            |    no    | `aimemory`                                | Path to aimemory binary              |
 | `-i, --include <patterns...>` |    no    | `**/*.ts **/*.tsx **/*.vue`               | Glob patterns to include             |
 | `-e, --exclude <patterns...>` |    no    | `**/node_modules/** **/dist/** **/*.d.ts` | Glob patterns to exclude             |
-| `--all`                       |    no    | `false`                                   | Include non-exported functions        |
+| `--all`                       |    no    | `false`                                   | Include non-exported functions       |
 | `-q, --quiet`                 |    no    | `false`                                   | No output                            |
 
 ### report

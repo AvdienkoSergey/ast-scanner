@@ -176,14 +176,14 @@ describe('handleToolCall', () => {
   })
 
   it('scan tool throws on missing db param', async () => {
-    await expect(
-      handleToolCall('scan', { project: '/tmp/test' })
-    ).rejects.toThrow('required parameter "db"')
+    await expect(handleToolCall('scan', { project: '/tmp/test' })).rejects.toThrow(
+      'required parameter "db"'
+    )
   })
 
   it('scan tool throws on missing project param', async () => {
-    await expect(
-      handleToolCall('scan', { db: '/tmp/test.db' })
-    ).rejects.toThrow('required parameter "project"')
+    await expect(handleToolCall('scan', { db: '/tmp/test.db' })).rejects.toThrow(
+      'required parameter "project"'
+    )
   })
 })

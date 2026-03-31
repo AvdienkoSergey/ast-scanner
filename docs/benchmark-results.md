@@ -8,31 +8,31 @@
 
 ## Test Projects
 
-| Project       | Files (ts/tsx/vue) | Description              |
-|---------------|--------------------|--------------------------|
-| Small project | 315                | Vue 3 SPA, medium size   |
-| Large project | 1 417              | Vue 3 monorepo, large SPA|
+| Project       | Files (ts/tsx/vue) | Description               |
+| ------------- | ------------------ | ------------------------- |
+| Small project | 315                | Vue 3 SPA, medium size    |
+| Large project | 1 417              | Vue 3 monorepo, large SPA |
 
 ---
 
 ## Results
 
-| Project       | Mode    | Files | Functions | Refs  | Median    | Min       | Max       | Stddev | Peak RSS |
-|---------------|---------|-------|-----------|-------|-----------|-----------|-----------|--------|----------|
-| Small project | manual  | 315   | 407       | 633   | **152ms** | 148ms     | 155ms     | 2ms    | 219 MB   |
-| Small project | precise | 315   | 406       | 632   | **1.06s** | 1.04s     | 1.11s     | 21ms   | 652 MB   |
-| Large project | manual  | 1 417 | 1 407     | 1 326 | **1.08s** | 1.06s     | 1.13s     | 19ms   | 624 MB   |
-| Large project | precise | 1 417 | 1 397     | 1 195 | **2.45s** | 2.37s     | 3.10s     | 239ms  | 665 MB   |
+| Project       | Mode    | Files | Functions | Refs  | Median    | Min   | Max   | Stddev | Peak RSS |
+| ------------- | ------- | ----- | --------- | ----- | --------- | ----- | ----- | ------ | -------- |
+| Small project | manual  | 315   | 407       | 633   | **152ms** | 148ms | 155ms | 2ms    | 219 MB   |
+| Small project | precise | 315   | 406       | 632   | **1.06s** | 1.04s | 1.11s | 21ms   | 652 MB   |
+| Large project | manual  | 1 417 | 1 407     | 1 326 | **1.08s** | 1.06s | 1.13s | 19ms   | 624 MB   |
+| Large project | precise | 1 417 | 1 397     | 1 195 | **2.45s** | 2.37s | 3.10s | 239ms  | 665 MB   |
 
 ---
 
 ## NFR Compliance
 
-| NFR   | Requirement                             | Status | Notes                                                         |
-|-------|-----------------------------------------|--------|---------------------------------------------------------------|
-| 1.1   | Manual mode < 1s for ~500 files         |  PASS | 315 files -> 152ms. Linear estimate for 500: ~242ms           |
-| 1.1   | Manual mode < 1s for ~500 files (large) |  NOTE | 1 417 files -> 1.08s - expected to be above limit at x4.5 size|
-| 1.2   | Precise mode 2-5s for ~500 files        |  PASS | 315 files -> 1.06s. 1 417 files -> 2.45s - within the limit  |
+| NFR | Requirement                             | Status | Notes                                                          |
+| --- | --------------------------------------- | ------ | -------------------------------------------------------------- |
+| 1.1 | Manual mode < 1s for ~500 files         | PASS   | 315 files -> 152ms. Linear estimate for 500: ~242ms            |
+| 1.1 | Manual mode < 1s for ~500 files (large) | NOTE   | 1 417 files -> 1.08s - expected to be above limit at x4.5 size |
+| 1.2 | Precise mode 2-5s for ~500 files        | PASS   | 315 files -> 1.06s. 1 417 files -> 2.45s - within the limit    |
 
 ### Manual mode estimate for 500 files
 
@@ -59,6 +59,7 @@ On the small project, results are almost the same: manual 633 refs vs precise 63
 On the large project, manual found **1 326 refs**, and precise found **1 195 refs** (+131 refs for manual).
 
 **Why the difference:**
+
 - Manual resolver uses heuristics: fuzzy name matching for barrel re-export resolution and pattern matching without type information - this gives false links of calls to same-name functions from other modules
 - Precise resolver uses TypeScript TypeChecker, which follows declarations exactly
 - On the small project, the difference is small (1 ref) - false matches from manual grow with more files, but after fixing tsconfig.json paths parsing, the gap got much smaller

@@ -2,12 +2,7 @@ import { execFileSync } from 'child_process'
 import * as path from 'path'
 import { EmitEntity, FunctionInfo } from './types'
 
-function emitToCtx(
-  entities: EmitEntity[],
-  dbPath: string,
-  ctxBin = 'ctx',
-  quiet = false
-): void {
+function emitToCtx(entities: EmitEntity[], dbPath: string, ctxBin = 'ctx', quiet = false): void {
   if (entities.length === 0) return
 
   const payload = { entities }

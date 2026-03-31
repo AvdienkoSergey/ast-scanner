@@ -74,10 +74,7 @@ async function analyzeProject(options: ScanOptions): Promise<{
         if (vueInfo.script) {
           const vueScript = vueInfo.script
           vueScriptContent = vueScript.content
-          const sourceFile = parseTypeScriptFile(
-            file.replace('.vue', '.ts'),
-            vueScript.content
-          )
+          const sourceFile = parseTypeScriptFile(file.replace('.vue', '.ts'), vueScript.content)
           functions = extractFunctions(sourceFile).map((fn) => ({
             ...fn,
             line: fn.line + vueScript.startLine - 1
@@ -103,7 +100,9 @@ async function analyzeProject(options: ScanOptions): Promise<{
       }
     } catch (err) {
       if (!quiet) {
-        console.warn(`Warning: failed to parse ${relativePath}: ${err instanceof Error ? err.message : err}`)
+        console.warn(
+          `Warning: failed to parse ${relativePath}: ${err instanceof Error ? err.message : err}`
+        )
       }
       continue
     }
