@@ -93,3 +93,7 @@ npm run test:watch     # tests in watch mode
 ## Releases
 
 Releases are managed automatically with [release-please](https://github.com/googleapis/release-please). When you merge to `main`, a PR with version update and CHANGELOG is created.
+
+## Code of Conduct
+
+Please read and follow the [Code of Conduct](CODE_OF_CONDUCT.md).
