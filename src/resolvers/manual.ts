@@ -83,10 +83,12 @@ function resolveBarrelExport(
   barrelCache: BarrelCache,
   aliases: PathAlias[]
 ): string | null {
-  if (!barrelCache.has(indexFile)) {
-    barrelCache.set(indexFile, buildBarrelMap(indexFile, aliases))
+  let barrel = barrelCache.get(indexFile)
+  if (!barrel) {
+    barrel = buildBarrelMap(indexFile, aliases)
+    barrelCache.set(indexFile, barrel)
   }
-  return barrelCache.get(indexFile)!.get(importedName) ?? null
+  return barrel.get(importedName) ?? null
 }
 
 function buildBarrelMap(indexFile: string, aliases: PathAlias[]): Map<string, string> {
@@ -267,8 +269,9 @@ export function resolveRefsManual(
       }
 
       if (targetLid && targetLid !== callerLid) {
-        if (!entityRefs.has(callerLid)) entityRefs.set(callerLid, new Set())
-        entityRefs.get(callerLid)!.add(targetLid)
+        let callerRefs = entityRefs.get(callerLid)
+        if (!callerRefs) { callerRefs = new Set(); entityRefs.set(callerLid, callerRefs) }
+        callerRefs.add(targetLid)
       }
     }
   }

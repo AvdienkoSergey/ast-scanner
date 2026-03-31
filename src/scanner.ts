@@ -72,14 +72,15 @@ async function analyzeProject(options: ScanOptions): Promise<{
         componentName = vueInfo.componentName
 
         if (vueInfo.script) {
-          vueScriptContent = vueInfo.script.content
+          const vueScript = vueInfo.script
+          vueScriptContent = vueScript.content
           const sourceFile = parseTypeScriptFile(
             file.replace('.vue', '.ts'),
-            vueInfo.script.content
+            vueScript.content
           )
           functions = extractFunctions(sourceFile).map((fn) => ({
             ...fn,
-            line: fn.line + vueInfo.script!.startLine - 1
+            line: fn.line + vueScript.startLine - 1
           }))
           imports = extractImports(sourceFile)
           const callAnalysis = extractCalls(sourceFile)

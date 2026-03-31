@@ -139,8 +139,9 @@ function walkCalls(
 
   function addRef(callerLid: string, targetLid: string) {
     if (callerLid === targetLid) return
-    if (!refs.has(callerLid)) refs.set(callerLid, new Set())
-    refs.get(callerLid)!.add(targetLid)
+    let callerRefs = refs.get(callerLid)
+    if (!callerRefs) { callerRefs = new Set(); refs.set(callerLid, callerRefs) }
+    callerRefs.add(targetLid)
   }
 
   function getEnclosingFunction(node: ts.Node): string | null {
@@ -274,9 +275,10 @@ export function resolveRefsPrecise(
     const fileRefs = walkCalls(sourceFile, checker, fnIndex, projectPath, analysis.absolutePath)
 
     for (const [caller, targets] of fileRefs) {
-      if (!entityRefs.has(caller)) entityRefs.set(caller, new Set())
+      let callerRefs = entityRefs.get(caller)
+      if (!callerRefs) { callerRefs = new Set(); entityRefs.set(caller, callerRefs) }
       for (const target of targets) {
-        entityRefs.get(caller)!.add(target)
+        callerRefs.add(target)
       }
     }
   }
